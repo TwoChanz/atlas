@@ -35,7 +35,7 @@ function extractMetadata(): {
 /**
  * Listen for metadata requests from background script
  */
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message.type === 'EXTRACT_METADATA') {
     const metadata = extractMetadata();
     sendResponse({ success: true, metadata });

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import type { Tool } from '@atlas/core';
 import './ToolCard.css';
 

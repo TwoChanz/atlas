@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useToolsStore } from '../../store/toolsStore';
 import { useWorkflowsStore } from '../../store/workflowsStore';
 import { useGoalsStore } from '../../store/goalsStore';

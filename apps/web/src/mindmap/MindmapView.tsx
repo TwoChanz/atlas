@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cytoscape from 'cytoscape';
 import coseBilkent from 'cytoscape-cose-bilkent';
+import type { InsightEdge } from '@atlas/core';
 import { useToolsStore } from '../store/toolsStore';
 import { useWorkflowsStore } from '../store/workflowsStore';
 import { useGoalsStore } from '../store/goalsStore';
@@ -101,7 +102,7 @@ export function MindmapView() {
         tile: true,
         tilingPaddingVertical: 10,
         tilingPaddingHorizontal: 10,
-      },
+      } as any,
     });
 
     cyRef.current = cy;
@@ -131,7 +132,7 @@ export function MindmapView() {
 
     try {
       // Generate edges based on cluster mode
-      let edges = [];
+      let edges: InsightEdge[] = [];
 
       if (clusterMode === 'auto') {
         // Combine all clustering methods
@@ -184,7 +185,7 @@ export function MindmapView() {
         edgeElasticity: 0.45,
         gravity: 0.25,
         numIter: 2500,
-      });
+      } as any);
 
       layout.run();
     } catch (error) {
