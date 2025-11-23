@@ -4,7 +4,7 @@ import { createInsightEdge } from '@atlas/core';
 /**
  * Generate edges between tools appearing in the same workflows
  */
-export function generateWorkflowClusters(tools: Tool[], workflows: Workflow[]): InsightEdge[] {
+export function generateWorkflowClusters(_tools: Tool[], workflows: Workflow[]): InsightEdge[] {
   const edges: InsightEdge[] = [];
 
   // For each workflow, create edges between all tools in the workflow

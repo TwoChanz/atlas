@@ -17,7 +17,7 @@ interface MindmapState {
   generateClusters: () => Promise<void>;
 }
 
-export const useMindmapStore = create<MindmapState>((set, get) => ({
+export const useMindmapStore = create<MindmapState>((set, _get) => ({
   clusterMode: 'auto',
   filters: createEmptyFilterState(),
   edges: [],

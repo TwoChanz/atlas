@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useToolsStore } from '../../store/toolsStore';
 import { useWorkflowsStore } from '../../store/workflowsStore';
 import { useGoalsStore } from '../../store/goalsStore';
@@ -33,7 +33,6 @@ export function GoalManager({ className = '' }: GoalManagerProps) {
   const [selectedToolIds, setSelectedToolIds] = useState<string[]>([]);
   const [selectedWorkflowIds, setSelectedWorkflowIds] = useState<string[]>([]);
 
-  const selectedGoal = selectedGoalId ? goals.find((g) => g.id === selectedGoalId) : null;
 
   const handleSelectGoal = (goal: Goal) => {
     setSelectedGoalId(goal.id);

@@ -92,7 +92,7 @@ async function handleGetPageInfo(tab?: chrome.tabs.Tab): Promise<{
 }
 
 // Track usage when user navigates
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+chrome.tabs.onUpdated.addListener((_tabId, changeInfo, tab) => {
   if (changeInfo.status === 'complete' && tab.url) {
     // TODO: Check if URL matches any existing tools and update usage
     trackToolUsage(tab.url);

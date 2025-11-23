@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { CaptureTool } from './components/CaptureTool';
 import { QuickView } from './components/QuickView';
 

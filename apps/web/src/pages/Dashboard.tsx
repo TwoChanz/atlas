@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Layout } from '../components/layout/Layout';
 import { ToolList } from '../components/domain/ToolList';
 import { MindmapView } from '../mindmap/MindmapView';

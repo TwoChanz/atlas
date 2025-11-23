@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useToolsStore } from '../../store/toolsStore';
 import { useWorkflowsStore } from '../../store/workflowsStore';
 import type { Workflow } from '@atlas/core';
@@ -32,9 +32,6 @@ export function WorkflowBuilder({ className = '' }: WorkflowBuilderProps) {
   const [draggedStepIndex, setDraggedStepIndex] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const selectedWorkflow = selectedWorkflowId
-    ? workflows.find((w) => w.id === selectedWorkflowId)
-    : null;
 
   const handleSelectWorkflow = (workflow: Workflow) => {
     setSelectedWorkflowId(workflow.id);

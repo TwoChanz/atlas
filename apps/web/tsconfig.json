@@ -7,10 +7,5 @@
     "composite": false
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"],
-  "references": [
-    { "path": "../../packages/core" },
-    { "path": "../../packages/storage" },
-    { "path": "../../packages/insights" }
-  ]
+  "exclude": ["node_modules", "dist"]
 }
