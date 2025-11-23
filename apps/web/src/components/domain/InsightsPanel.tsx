@@ -2,8 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useToolsStore } from '../../store/toolsStore';
 import { useWorkflowsStore } from '../../store/workflowsStore';
 import { useGoalsStore } from '../../store/goalsStore';
-import { groupRedundantTools } from '@atlas/insights/src/analysis/redundancyDetection';
-import { suggestWorkflows } from '@atlas/insights/src/recommendations/workflowSuggestions';
+import { groupRedundantTools, suggestWorkflows } from '@atlas/insights';
 import { Button } from '../common/Button';
 import './InsightsPanel.css';
 
