@@ -97,6 +97,9 @@ export function suggestNextSteps(
   // Get tools already in the workflow
   const workflowToolIds = new Set(currentWorkflow.steps);
   const lastStepId = currentWorkflow.steps[currentWorkflow.steps.length - 1];
+
+  if (!lastStepId) return [];
+
   const lastTool = allTools.find((t) => t.id === lastStepId);
 
   if (!lastTool) return [];

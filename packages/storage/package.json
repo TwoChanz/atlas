@@ -13,8 +13,8 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext .ts",
@@ -28,6 +28,7 @@
     "idb": "^8.0.0"
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.254",
     "@vitest/coverage-v8": "^1.0.4",
     "fake-indexeddb": "^5.0.2",
     "tsup": "^8.0.1",

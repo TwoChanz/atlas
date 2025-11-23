@@ -48,7 +48,7 @@ export interface AtlasDB extends DBSchema {
  */
 export async function openAtlasDB(): Promise<IDBPDatabase<AtlasDB>> {
   return openDB<AtlasDB>(DB_NAME, DB_VERSION, {
-    upgrade(db, oldVersion, newVersion, transaction) {
+    upgrade(db, _oldVersion, _newVersion, _transaction) {
       // Tools store
       if (!db.objectStoreNames.contains('tools')) {
         const toolStore = db.createObjectStore('tools', { keyPath: 'id' });

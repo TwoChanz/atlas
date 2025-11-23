@@ -4,7 +4,7 @@ import { createInsightEdge } from '@atlas/core';
 /**
  * Generate edges between tools supporting the same goals
  */
-export function generateGoalClusters(tools: Tool[], goals: Goal[]): InsightEdge[] {
+export function generateGoalClusters(_tools: Tool[], goals: Goal[]): InsightEdge[] {
   const edges: InsightEdge[] = [];
 
   // For each goal, create edges between related tools

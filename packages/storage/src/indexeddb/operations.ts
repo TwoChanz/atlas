@@ -5,9 +5,12 @@ import { openAtlasDB } from './schema';
  * Storage error class
  */
 export class StorageError extends Error {
-  constructor(message: string, public cause?: Error) {
+  override cause?: Error;
+
+  constructor(message: string, cause?: Error) {
     super(message);
     this.name = 'StorageError';
+    this.cause = cause;
   }
 }
 
