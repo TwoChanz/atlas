@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
-    "clean": "rm -rf dist"
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "@atlas/core": "workspace:*",
