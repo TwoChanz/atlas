@@ -9,6 +9,7 @@ interface LayoutComposition {
   Sidebar: React.FC<{ children: ReactNode }>;
   Main: React.FC<{ children: ReactNode }>;
   RightPanel: React.FC<{ children: ReactNode }>;
+  FullWidth: React.FC<{ children: ReactNode }>;
 }
 
 export const Layout: React.FC<LayoutProps> & LayoutComposition = ({ children }) => {
@@ -25,4 +26,8 @@ Layout.Main = ({ children }) => {
 
 Layout.RightPanel = ({ children }) => {
   return <aside className="layout-right-panel">{children}</aside>;
+};
+
+Layout.FullWidth = ({ children }) => {
+  return <div className="layout-full-width">{children}</div>;
 };

@@ -23,6 +23,13 @@
   overflow: hidden;
 }
 
+.layout-full-width {
+  grid-column: 1 / -1;
+  background-color: white;
+  overflow: hidden;
+  height: 100vh;
+}
+
 /* Responsive design */
 @media (max-width: 1024px) {
   .layout {
