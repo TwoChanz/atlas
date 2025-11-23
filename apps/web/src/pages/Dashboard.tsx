@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Layout } from '../components/layout/Layout';
 import { ToolList } from '../components/domain/ToolList';
 import { MindmapView } from '../mindmap/MindmapView';
+import { InsightsPanel } from '../components/domain/InsightsPanel';
 import { ExportModal } from '../components/domain/ExportModal';
 import { Button } from '../components/common/Button';
 
 export function Dashboard() {
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+  const [activeView, setActiveView] = useState<'mindmap' | 'insights'>('mindmap');
 
   return (
     <Layout>
@@ -42,8 +44,32 @@ export function Dashboard() {
       </Layout.Main>
 
       <Layout.RightPanel>
-        <div className="h-full">
-          <MindmapView />
+        <div className="h-full flex flex-col">
+          <div className="flex border-b border-gray-200">
+            <button
+              className={`flex-1 py-3 px-4 font-medium transition-colors ${
+                activeView === 'mindmap'
+                  ? 'border-b-2 border-blue-500 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+              onClick={() => setActiveView('mindmap')}
+            >
+              Mindmap
+            </button>
+            <button
+              className={`flex-1 py-3 px-4 font-medium transition-colors ${
+                activeView === 'insights'
+                  ? 'border-b-2 border-blue-500 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+              onClick={() => setActiveView('insights')}
+            >
+              Insights
+            </button>
+          </div>
+          <div className="flex-1 overflow-hidden">
+            {activeView === 'mindmap' ? <MindmapView /> : <InsightsPanel />}
+          </div>
         </div>
       </Layout.RightPanel>
 
