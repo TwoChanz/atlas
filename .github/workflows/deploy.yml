@@ -1,0 +1,94 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-web:
+    name: Deploy Web App
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://atlas.example.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build:packages
+
+      - name: Build web app
+        run: pnpm build:web
+        env:
+          NODE_ENV: production
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: apps/web
+
+  deploy-extension:
+    name: Package Extension
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build extension
+        run: pnpm build:extension
+        env:
+          NODE_ENV: production
+
+      - name: Package extension
+        working-directory: apps/extension
+        run: |
+          cd dist
+          zip -r ../atlas-extension.zip .
+
+      - name: Upload extension package
+        uses: actions/upload-artifact@v3
+        with:
+          name: chrome-extension
+          path: apps/extension/atlas-extension.zip
+
+      # Uncomment and configure for automatic Chrome Web Store publishing
+      # - name: Publish to Chrome Web Store
+      #   uses: mnao305/chrome-extension-upload@v4
+      #   with:
+      #     file-path: apps/extension/atlas-extension.zip
+      #     extension-id: ${{ secrets.CHROME_EXTENSION_ID }}
+      #     client-id: ${{ secrets.CHROME_CLIENT_ID }}
+      #     client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+      #     refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
