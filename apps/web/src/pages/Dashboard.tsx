@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout } from '../components/layout/Layout';
 import { ToolList } from '../components/domain/ToolList';
 import { MindmapView } from '../mindmap/MindmapView';
+import { ExportModal } from '../components/domain/ExportModal';
+import { Button } from '../components/common/Button';
 
 export function Dashboard() {
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+
   return (
     <Layout>
       <Layout.Sidebar>
@@ -16,8 +20,15 @@ export function Dashboard() {
       <Layout.Main>
         <div className="flex flex-col h-full">
           <div className="p-lg border-b border-gray-200">
-            <h1 className="text-2xl font-bold">Atlas</h1>
-            <p className="text-gray-600">Personal Tool Intelligence System</p>
+            <div className="flex justify-between items-center">
+              <div>
+                <h1 className="text-2xl font-bold">Atlas</h1>
+                <p className="text-gray-600">Personal Tool Intelligence System</p>
+              </div>
+              <Button variant="secondary" onClick={() => setIsExportModalOpen(true)} size="sm">
+                Export Data
+              </Button>
+            </div>
           </div>
           <div className="flex-1 p-lg">
             <div className="text-center text-gray-500 mt-8">
@@ -35,6 +46,8 @@ export function Dashboard() {
           <MindmapView />
         </div>
       </Layout.RightPanel>
+
+      <ExportModal isOpen={isExportModalOpen} onClose={() => setIsExportModalOpen(false)} />
     </Layout>
   );
 }
