@@ -22,7 +22,8 @@
     "zustand": "^4.4.7",
     "cytoscape": "^3.28.1",
     "cytoscape-cose-bilkent": "^4.1.0",
-    "date-fns": "^3.0.6"
+    "date-fns": "^3.0.6",
+    "idb": "^8.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.47",
